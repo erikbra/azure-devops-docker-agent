@@ -16,12 +16,25 @@ docker build -t azure-devops-agent:latest https://github.com/erikbra/azure-devop
 That will give you an image, **azure-devops-agent:latest** on you box. Then you can run it locally.
 Use the included `docker-compose.yml` if you wish, and just write `docker-compose up`. 
 
+## Environment variables
+
+(see https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops)
+
+| Environment variable | Description                                                 |
+|----------------------|-------------------------------------------------------------|
+| AZP_URL              | The URL of the Azure DevOps or Azure DevOps Server instance. |
+| AZP_TOKEN            | [Personal Access Token (PAT)](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops) with **Agent Pools (read, manage)** scope, created by a user who has permission to [configure agents](pools-queues.md#creating-agent-pools), at `AZP_URL`.    |
+| AZP_AGENT_NAME       | Agent name (default value: the container hostname).          |
+| AZP_POOL             | Agent pool name (default value: `Default`).                  |
+
 Or, you can use just Docker, and run it manually:
 
 ```
-docker run -e AZP_URL=<Azure DevOps instance url> \
+docker run \
+  -e AZP_URL=<Azure DevOps instance url> \
   -e AZP_TOKEN=<PAT token> \
   -e AZP_AGENT_NAME=mydockeragent \
+  -e AZP_POOL=superduperpool
   -v /var/run/docker.sock:/var/run/docker.sock azure-devops-agent:latest
 ```
 
