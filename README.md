@@ -7,8 +7,7 @@ You need to create a PAT (Personal Access Token, see https://dev.azure.com/youro
 
 Create an environment variable, AZP_TOKEN containing the PAT.
 
-## Usage:
-
+## Build the image
 ```
 docker build -t azure-devops-docker-agent:latest https://github.com/erikbra/azure-devops-docker-agent.git#main
 ```
@@ -16,9 +15,9 @@ docker build -t azure-devops-docker-agent:latest https://github.com/erikbra/azur
 **NOTE: you might have to use `sudo` to build on Linux, if you don't have permissions to connect to the docker daemon as your ordinary user**
 
 That will give you an image, **azure-devops-agent:latest** on you box. Then you can run it locally.
-Use the included `docker-compose.yml` if you wish, and just write `docker-compose up`. 
 
-## Environment variables
+
+## Set environment variables
 
 (see https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops)
 
@@ -28,6 +27,11 @@ Use the included `docker-compose.yml` if you wish, and just write `docker-compos
 | AZP_TOKEN            | [Personal Access Token (PAT)](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops) with **Agent Pools (read, manage)** scope, created by a user who has permission to [configure agents](pools-queues.md#creating-agent-pools), at `AZP_URL`.    |
 | AZP_AGENT_NAME       | Agent name (default value: the container hostname).          |
 | AZP_POOL             | Agent pool name (default value: `Default`).                  |
+
+
+
+## Run the image
+Use the included `docker-compose.yml` if you wish, and just write `docker-compose up`. 
 
 Or, you can use just Docker, and run it manually:
 
@@ -39,6 +43,7 @@ docker run \
   -e AZP_POOL=superduperpool
   -v /var/run/docker.sock:/var/run/docker.sock azure-devops-docker-agent:latest
 ```
+
 
 You need to map the docker socket to be able to run docker builds inside the container. It's not pretty, and it's a security risk, so do this at your own risk :)
 
