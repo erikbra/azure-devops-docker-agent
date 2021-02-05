@@ -10,8 +10,10 @@ Create an environment variable, AZP_TOKEN containing the PAT.
 ## Usage:
 
 ```
-docker build -t azure-devops-agent:latest https://github.com/erikbra/azure-devops-docker-agent.git
+docker build -t azure-devops-docker-agent:latest https://github.com/erikbra/azure-devops-docker-agent.git#main
 ```
+
+**NOTE: you might have to use `sudo` to build on Linux, if you don't have permissions to connect to the docker daemon as your ordinary user**
 
 That will give you an image, **azure-devops-agent:latest** on you box. Then you can run it locally.
 Use the included `docker-compose.yml` if you wish, and just write `docker-compose up`. 
@@ -35,7 +37,7 @@ docker run \
   -e AZP_TOKEN=<PAT token> \
   -e AZP_AGENT_NAME=mydockeragent \
   -e AZP_POOL=superduperpool
-  -v /var/run/docker.sock:/var/run/docker.sock azure-devops-agent:latest
+  -v /var/run/docker.sock:/var/run/docker.sock azure-devops-docker-agent:latest
 ```
 
 You need to map the docker socket to be able to run docker builds inside the container. It's not pretty, and it's a security risk, so do this at your own risk :)
