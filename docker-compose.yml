@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  build-agent:
+    image: dockeragent:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - AZP_URL=${AZP_TOKEN}
+      - AZP_TOKEN=${AZP_TOKEN}
+      # If you create more than one replica below, setting the name here won't work. Just 
+      # leave it empty, and you will get a random name.
+      # - AZP_AGENT_NAME=my-very-special-build-agent
+      - AZP_POOL=${AZP_POOL}
+    deploy:
+      mode: replicated
+      # Running a large number of agent does not work very well - try what works for you :)
+      replicas: 3
