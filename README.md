@@ -35,7 +35,7 @@ That will give you an image, **azure-devops-agent:latest** on you box. Then you 
 
 
 ## Running the image
-Use the included `docker-compose.yml` if you wish, and just write `docker-compose up`. 
+Use the included `docker-compose.yml` if you wish, and just write `docker-compose up -d`. 
 
 Or, you can use just Docker, and run it manually:
 
