@@ -41,6 +41,7 @@ Or, you can use just Docker, and run it manually:
 
 ```
 docker run \
+  --name myagent1 \ 
   -e AZP_URL=<Azure DevOps instance url> \
   -e AZP_TOKEN=<PAT token> \
   -e AZP_AGENT_NAME=mydockeragent \
