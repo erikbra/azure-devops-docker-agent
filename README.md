@@ -43,10 +43,10 @@ Or, you can use just Docker, and run it manually:
 docker run -d \
   --restart unless-stopped \
   --name myagent1 \ 
-  -e AZP_URL=<Azure DevOps instance url> \
-  -e AZP_TOKEN=<PAT token> \
-  -e AZP_AGENT_NAME=mydockeragent \
-  -e AZP_POOL=superduperpool
+  -e AZP_URL \
+  -e AZP_TOKEN \
+  -e AZP_AGENT_NAME=myagent1 \
+  -e AZP_POOL
   -v /var/run/docker.sock:/var/run/docker.sock azure-devops-docker-agent:latest
 ```
 
