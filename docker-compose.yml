@@ -5,7 +5,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - AZP_URL=${AZP_TOKEN}
+      - AZP_URL=${AZP_URL}
       - AZP_TOKEN=${AZP_TOKEN}
       # If you create more than one replica below, setting the name here won't work. Just 
       # leave it empty, and you will get a random name.
