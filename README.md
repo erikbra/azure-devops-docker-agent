@@ -1,13 +1,17 @@
 # azure-devops-docker-agent
 Dockerfile and script to build  docker image running a Linux Azure Devops build agent
 
-The official docs can be found here: https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops#linux  (you can and should run Linux containers on windows too)
+The official docs can be found here: https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/docker?view=azure-devops#linux  
+
+(IMHO, you __can__ and __should__ run Linux containers on windows too)
+
+## Creating a Personal Access Token (PAT)
 
 You need to create a PAT (Personal Access Token, see https://dev.azure.com/yourorganizationname/_usersSettings/tokens to create one of your own). I couldn't understand all the permissions needed. I think you need a lot, to be able to actually register the agents with DevOps without any intervention.
 
 Create an environment variable, AZP_TOKEN containing the PAT.
 
-## Build the image
+## Building the image
 ```
 docker build -t azure-devops-docker-agent:latest https://github.com/erikbra/azure-devops-docker-agent.git#main
 ```
@@ -17,7 +21,7 @@ docker build -t azure-devops-docker-agent:latest https://github.com/erikbra/azur
 That will give you an image, **azure-devops-agent:latest** on you box. Then you can run it locally.
 
 
-## Set environment variables
+## Setting environment variables
 
 (see https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops)
 
@@ -30,7 +34,7 @@ That will give you an image, **azure-devops-agent:latest** on you box. Then you 
 
 
 
-## Run the image
+## Running the image
 Use the included `docker-compose.yml` if you wish, and just write `docker-compose up`. 
 
 Or, you can use just Docker, and run it manually:
