@@ -40,7 +40,8 @@ Use the included `docker-compose.yml` if you wish, and just write `docker-compos
 Or, you can use just Docker, and run it manually:
 
 ```
-docker run \
+docker run -d \
+  --restart unless-stopped \
   --name myagent1 \ 
   -e AZP_URL=<Azure DevOps instance url> \
   -e AZP_TOKEN=<PAT token> \
